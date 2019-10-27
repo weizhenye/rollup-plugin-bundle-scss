@@ -1,0 +1,47 @@
+{
+  "name": "rollup-plugin-bundle-scss",
+  "version": "0.0.0",
+  "description": "Rollup .scss imports into one bundled .scss file",
+  "main": "dist/index.js",
+  "module": "index.js",
+  "files": [
+    "dist",
+    "index.js"
+  ],
+  "scripts": {
+    "build": "rollup -f cjs -i index.js -o dist/index.js",
+    "lint": "eslint index.js",
+    "test": "npm run lint",
+    "preversion": "npm test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weizhenye/rollup-plugin-bundle-scss.git"
+  },
+  "keywords": [
+    "rollup-plugin",
+    "scss",
+    "vue"
+  ],
+  "author": "Zhenye Wei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weizhenye/rollup-plugin-bundle-scss/issues"
+  },
+  "homepage": "https://github.com/weizhenye/rollup-plugin-bundle-scss#readme",
+  "engines": {
+    "node": ">= 10"
+  },
+  "dependencies": {
+    "scss-bundle": "0.0.0-canary.048dc82",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "rollup": "^1.25.2"
+  }
+}
