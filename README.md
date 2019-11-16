@@ -1,10 +1,9 @@
 # rollup-plugin-bundle-scss
 
+[![GitHub Action](https://github.com/weizhenye/rollup-plugin-bundle-scss/workflows/Node%20CI/badge.svg)](https://github.com/weizhenye/rollup-plugin-bundle-scss/actions?query=workflow%3A%22Node+CI%22)
 [![Node version](https://badgen.net/npm/node/rollup-plugin-bundle-scss?icon=https://simpleicons.now.sh/node-dot-js/fff)](https://nodejs.org)
 [![NPM version](https://badgen.net/npm/v/rollup-plugin-bundle-scss?icon=npm)](https://www.npmjs.com/package/rollup-plugin-bundle-scss)
 [![License](https://badgen.net/npm/license/rollup-plugin-bundle-scss?icon=https://api.iconify.design/octicon:law.svg?color=white)](https://github.com/weizhenye/rollup-plugin-bundle-scss/blob/master/LICENSE)
-
-**WIP**
 
 Rollup .scss imports into one bundled .scss file. Supports .vue files.
 

@@ -36,7 +36,7 @@
     "node": ">= 10"
   },
   "dependencies": {
-    "scss-bundle": "0.0.0-canary.048dc82",
+    "scss-bundle": "^3.0.2",
     "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
@@ -46,6 +46,6 @@
     "jest": "^24.9.0",
     "rollup": "^1.27.0",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-vue": "^5.1.1"
+    "rollup-plugin-vue": "^5.1.2"
   }
 }
