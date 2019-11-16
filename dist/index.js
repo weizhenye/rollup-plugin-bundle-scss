@@ -7,7 +7,7 @@ var path = _interopDefault(require('path'));
 var compiler = _interopDefault(require('vue-template-compiler'));
 var scssBundle = require('scss-bundle');
 
-function bundleScss({ output }) {
+function bundleScss({ output } = {}) {
   const files = [];
   return {
     name: 'bundle-scss',
