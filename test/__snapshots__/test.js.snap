@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cases basic 1`] = `
+".bar {
+  color: #bf4080;
+}
+
+
+.foo {
+  color: #cf649a;
+}
+"
+`;
+
+exports[`cases vue 1`] = `
+"
+.foo {
+  color: #41b883;
+}
+
+
+.bar {
+  color: #35495d;
+}
+"
+`;

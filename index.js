@@ -3,7 +3,7 @@ import path from 'path';
 import compiler from 'vue-template-compiler';
 import { Bundler } from 'scss-bundle';
 
-export default function bundleScss({ output }) {
+export default function bundleScss({ output } = {}) {
   const files = [];
   return {
     name: 'bundle-scss',

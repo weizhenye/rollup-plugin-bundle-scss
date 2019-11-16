@@ -1,0 +1,14 @@
+{
+  "globals": {
+    "afterAll": true,
+    "afterEach": true,
+    "beforeAll": true,
+    "beforeEach": true,
+    "describe": true,
+    "test": true,
+    "expect": true
+  },
+  "rules": {
+    "func-names": 0
+  }
+}

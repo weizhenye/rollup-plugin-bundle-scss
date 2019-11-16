@@ -25,7 +25,7 @@ export default {
   input: 'src/index.js',
   output: {
     file: 'dist/index.js',
-    format: 'umd',
+    format: 'esm',
   },
   plugins: [
     // output to dist/index.scss
@@ -44,10 +44,10 @@ import commonjs from 'rollup-plugin-commonjs';
 import vue from 'rollup-plugin-vue';
 
 export default {
-  input: 'src/index.js',
+  input: 'src/App.vue',
   output: {
     file: 'dist/index.js',
-    format: 'umd',
+    format: 'esm',
   },
   plugins: [
     // required by rollup-plugin-vue

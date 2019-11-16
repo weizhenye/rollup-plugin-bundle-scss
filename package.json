@@ -10,8 +10,9 @@
   ],
   "scripts": {
     "build": "rollup -f cjs -i index.js -o dist/index.js",
-    "lint": "eslint index.js",
-    "test": "npm run lint",
+    "lint": "eslint index.js test/test.js",
+    "unit": "jest",
+    "test": "npm run lint && npm run unit",
     "preversion": "npm test",
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags && npm publish"
@@ -42,6 +43,9 @@
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "rollup": "^1.25.2"
+    "jest": "^24.9.0",
+    "rollup": "^1.27.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-vue": "^5.1.1"
   }
 }
