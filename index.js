@@ -29,8 +29,8 @@ export default function bundleScss({ output, exclusive = true } = {}) {
     },
     async generateBundle(opts) {
       const outputPath = path.resolve(
-        path.dirname(opts.file),
-        output || `${path.parse(opts.file).name}.scss`,
+        opts.file ? path.dirname(opts.file) : opts.dir,
+        output || `${opts.file ? path.parse(opts.file).name : 'index'}.scss`,
       );
       await fs.mkdir(path.dirname(outputPath), { recursive: true });
       const entryContent = files.map((file) => `@import "${file.id}";`).join('\n');
