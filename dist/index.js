@@ -7,14 +7,16 @@ var path = _interopDefault(require('path'));
 var compiler = _interopDefault(require('vue-template-compiler'));
 var scssBundle = require('scss-bundle');
 
-function bundleScss({ output } = {}) {
+function bundleScss({ output, exclusive = true } = {}) {
   const files = [];
   return {
     name: 'bundle-scss',
     transform(source, id) {
       if (/\.scss$/.test(id)) {
         files.push({ id, content: source });
-        return { code: `export default ${JSON.stringify(source)}` };
+        if (exclusive) {
+          return { code: `export default ${JSON.stringify(source)}` };
+        }
       }
       if (/\.vue$/.test(id)) {
         const { styles } = compiler.parseComponent(source);
@@ -31,8 +33,8 @@ function bundleScss({ output } = {}) {
     },
     async generateBundle(opts) {
       const outputPath = path.resolve(
-        path.dirname(opts.file),
-        output || `${path.parse(opts.file).name}.scss`,
+        opts.file ? path.dirname(opts.file) : opts.dir,
+        output || `${opts.file ? path.parse(opts.file).name : 'index'}.scss`,
       );
       await fs.promises.mkdir(path.dirname(outputPath), { recursive: true });
       const entryContent = files.map((file) => `@import "${file.id}";`).join('\n');
