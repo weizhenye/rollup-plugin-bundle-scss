@@ -16,5 +16,6 @@ async function run(name, output = './dist/index.scss') {
 describe('cases', () => {
   test('basic', () => run('basic'));
   test('custom-output', () => run('custom-output', './dist/custom.scss'));
+  test('postcss', () => run('postcss'));
   test('vue', () => run('vue'));
 });

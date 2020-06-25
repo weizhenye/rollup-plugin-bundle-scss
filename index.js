@@ -3,14 +3,16 @@ import path from 'path';
 import compiler from 'vue-template-compiler';
 import { Bundler } from 'scss-bundle';
 
-export default function bundleScss({ output } = {}) {
+export default function bundleScss({ output, exclusive = true } = {}) {
   const files = [];
   return {
     name: 'bundle-scss',
     transform(source, id) {
       if (/\.scss$/.test(id)) {
         files.push({ id, content: source });
-        return { code: `export default ${JSON.stringify(source)}` };
+        if (exclusive) {
+          return { code: `export default ${JSON.stringify(source)}` };
+        }
       }
       if (/\.vue$/.test(id)) {
         const { styles } = compiler.parseComponent(source);

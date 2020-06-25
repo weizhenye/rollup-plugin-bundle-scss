@@ -24,6 +24,16 @@ exports[`cases custom-output 1`] = `
 "
 `;
 
+exports[`cases postcss 1`] = `
+"$red: #ff0000;
+
+
+.element {
+  color: $red;
+}
+"
+`;
+
 exports[`cases vue 1`] = `
 "
 .foo {

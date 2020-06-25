@@ -9,6 +9,8 @@ Rollup .scss imports into one bundled .scss file. Supports .vue files.
 
 Maybe you're writing an UI library with SCSS for styles, and you want to bundle all styles in components into one .scss file, so that users can import it and do some custom theming. That's it.
 
+It dependence on [scss-bundle](https://github.com/reactway/scss-bundle).
+
 ## Installation
 
 ```bash
@@ -56,4 +58,40 @@ export default {
     vue(),
   ],
 };
+```
+
+Using with [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss):
+
+```js
+import bundleScss from 'rollup-plugin-bundle-scss';
+import postcss from 'rollup-plugin-postcss';
+
+export default {
+  input: 'src/index.js',
+  output: {
+    file: 'dist/index.js',
+    format: 'esm',
+  },
+  plugins: [
+    // put it before postcss(), and set exclusive to false
+    bundleScss({ exclusive: false }),
+    postcss({
+      // ...
+    }),
+  ],
+};
+```
+
+## API
+
+```js
+bundleScss({
+  // where to output bundled SCSS file
+  output: String,
+
+  // Whether SCSS file is exclusive to rollup-plugin-bundle-scss.
+  // Defalut value: true
+  // Set it to false when there're other plugin to handle SCSS file after bundleScss()
+  exclusive: Boolean,
+})
 ```
