@@ -12,6 +12,18 @@ exports[`cases basic 1`] = `
 "
 `;
 
+exports[`cases bundler-options 1`] = `
+".foo {
+  color: #cf649a;
+}
+
+
+.bar {
+  color: #bf4080;
+}
+"
+`;
+
 exports[`cases custom-output 1`] = `
 ".bar {
   color: #bf4080;

@@ -3,8 +3,14 @@ import path from 'path';
 import compiler from 'vue-template-compiler';
 import { Bundler } from 'scss-bundle';
 
-export default function bundleScss({ output, exclusive = true } = {}) {
+export default function bundleScss({ output, exclusive = true, bundlerOptions = {} } = {}) {
   const files = [];
+  const {
+    project = null,
+    dedupeGlobs = [],
+    includePaths = [],
+    ignoreImports = [],
+  } = bundlerOptions;
   return {
     name: 'bundle-scss',
     transform(source, id) {
@@ -36,8 +42,8 @@ export default function bundleScss({ output, exclusive = true } = {}) {
       const entryContent = files.map((file) => `@import "${file.id}";`).join('\n');
       await fs.writeFile(outputPath, entryContent);
       const registry = Object.assign({}, ...files.map((file) => ({ [file.id]: file.content })));
-      const bundler = new Bundler(registry);
-      const result = await bundler.bundle(outputPath);
+      const bundler = new Bundler(registry, project);
+      const result = await bundler.bundle(outputPath, dedupeGlobs, includePaths, ignoreImports);
       await fs.writeFile(outputPath, result.bundledContent);
     },
   };

@@ -93,5 +93,15 @@ bundleScss({
   // Defalut value: true
   // Set it to false when there're other plugin to handle SCSS file after bundleScss()
   exclusive: Boolean,
+
+  // bundlerOptions will be passed into `scss-bundle` package,
+  // see document here https://github.com/reactway/scss-bundle
+  bundlerOptions: {
+    // If tilde import is used, `project` is required for finding `node_modules`
+    project: String,
+    dedupeGlobs: String[],
+    includePaths: String[],
+    ignoreImports: String[],
+  },
 })
 ```
