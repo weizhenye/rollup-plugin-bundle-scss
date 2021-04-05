@@ -58,3 +58,15 @@ exports[`cases vue 1`] = `
 }
 "
 `;
+
+exports[`cases vue3 1`] = `
+"
+.foo {
+  color: #41b883;
+}
+
+.bar {
+  color: #35495d;
+}
+"
+`;

@@ -37,7 +37,7 @@ export default {
 };
 ```
 
-Using with [rollup-plugin-vue](https://github.com/vuejs/rollup-plugin-vue):
+Using with Vue 2 by [rollup-plugin-vue@5](https://github.com/vuejs/rollup-plugin-vue):
 
 ```js
 import bundleScss from 'rollup-plugin-bundle-scss';
@@ -58,6 +58,27 @@ export default {
     vue(),
   ],
 };
+```
+
+Using with Vue 3 by [rollup-plugin-vue@6](https://github.com/vuejs/rollup-plugin-vue):
+
+```js
+import bundleScss from 'rollup-plugin-bundle-scss';
+import vue from 'rollup-plugin-vue';
+
+export default {
+  input: 'src/App.vue',
+  output: {
+    file: 'dist/index.js',
+    format: 'esm',
+  },
+  plugins: [
+    vue(),
+    // put it after vue()
+    bundleScss(),
+  ],
+};
+
 ```
 
 Using with [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss):
