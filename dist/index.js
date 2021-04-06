@@ -2,13 +2,36 @@
 
 var fs = require('fs');
 var path = require('path');
-var compiler = require('vue-template-compiler');
 var scssBundle = require('scss-bundle');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () {
+            return e[k];
+          }
+        });
+      }
+    });
+  }
+  n['default'] = e;
+  return Object.freeze(n);
+}
+
 var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
-var compiler__default = /*#__PURE__*/_interopDefaultLegacy(compiler);
+
+let compiler = null;
+Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('vue-template-compiler')); })
+  .then((module) => { compiler = module; })
+  .catch(() => {});
 
 function bundleScss({ output, exclusive = true, bundlerOptions = {} } = {}) {
   const files = [];
@@ -27,8 +50,8 @@ function bundleScss({ output, exclusive = true, bundlerOptions = {} } = {}) {
           return { code: `export default ${JSON.stringify(source)}` };
         }
       }
-      if (/\.vue$/.test(id)) {
-        const { styles } = compiler__default['default'].parseComponent(source);
+      if (/\.vue$/.test(id) && compiler) {
+        const { styles } = compiler.parseComponent(source);
         files.push(
           ...styles
             .filter((style) => style.lang === 'scss')
