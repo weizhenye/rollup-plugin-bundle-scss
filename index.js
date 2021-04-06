@@ -1,7 +1,11 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import compiler from 'vue-template-compiler';
 import { Bundler } from 'scss-bundle';
+
+let compiler = null;
+import('vue-template-compiler')
+  .then((module) => { compiler = module; })
+  .catch(() => {});
 
 export default function bundleScss({ output, exclusive = true, bundlerOptions = {} } = {}) {
   const files = [];
@@ -20,7 +24,7 @@ export default function bundleScss({ output, exclusive = true, bundlerOptions = 
           return { code: `export default ${JSON.stringify(source)}` };
         }
       }
-      if (/\.vue$/.test(id)) {
+      if (/\.vue$/.test(id) && compiler) {
         const { styles } = compiler.parseComponent(source);
         files.push(
           ...styles
